@@ -3,8 +3,8 @@ io:
   output_dir: "results"
 
 dish:
-  min_radius_px: 800
-  max_radius_px: 2000
+  min_radius_px: 600     # radius, not diameter
+  max_radius_px: 1000    # radius, not diameter
   rim_erosion_pct: 3.0
 
 colony:

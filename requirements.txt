@@ -1,0 +1,11 @@
+numpy
+pandas
+opencv-python
+scikit-image
+scikit-learn
+scipy
+matplotlib
+tqdm
+typer
+jinja2
+yaml

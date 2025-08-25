@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Biopigment – Image Cluster Report</title>
+<style>
+body { font-family: Arial, Helvetica, sans-serif; margin: 24px; color: #222; }
+h1, h2 { margin: 0.4em 0; }
+section { margin-bottom: 28px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
+th { background: #f3f3f3; }
+.small { font-size: 12px; color: #555; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; }
+.card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
+.card h3 { margin: 0; padding: 8px 12px; background: #f7f7f7; border-bottom: 1px solid #ddd; font-size: 16px; }
+.card .body { padding: 10px; }
+img { max-width: 100%; height: auto; display: block; }
+.code { font-family: Consolas, Menlo, monospace; background: #f6f6f6; padding: 2px 4px; border-radius: 4px; }
+.kv { display: grid; grid-template-columns: 180px 1fr; gap: 4px 12px; }
+</style>
+</head>
+<body>
+<h1>Biopigment – Image Cluster Report</h1>
+<p class="small">This report summarizes dish detection and a*b* clustering results. Paths are relative to the <span class="code">results/</span> directory.</p>
+
+<section>
+  <h2>Overall cluster area (mean across images)</h2>
+  {% if overall %}
+  <table>
+    <thead><tr><th>Cluster</th><th>Mean area %</th></tr></thead>
+    <tbody>
+    {% for row in overall %}
+      <tr><td>{{ row.cluster }}</td><td>{{ "%.2f"|format(row.area_pct) }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No metrics available.</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>QC summary</h2>
+  {% if qc %}
+  <table>
+    <thead>
+      <tr><th>Image</th><th>Width</th><th>Height</th><th>Dish found</th><th>Dish radius (px)</th><th>Rim erosion (px)</th><th>Colony mask</th><th>Error</th></tr>
+    </thead>
+    <tbody>
+      {% for row in qc %}
+      <tr>
+        <td>{{ row.image }}</td>
+        <td>{{ row.width if row.width is defined else "" }}</td>
+        <td>{{ row.height if row.height is defined else "" }}</td>
+        <td>{{ row.dish_found }}</td>
+        <td>{{ row.dish_radius_px if row.dish_radius_px is defined else "" }}</td>
+        <td>{{ row.rim_erosion_px if row.rim_erosion_px is defined else "" }}</td>
+        <td>{{ row.colony_mask_used if row.colony_mask_used is defined else "" }}</td>
+        <td>{{ row.error if row.error is defined else "" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No QC rows found.</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>Per-image montage</h2>
+  <div class="grid">
+    {% for base, imgs in assets.items() %}
+    <div class="card">
+      <h3>{{ base }}</h3>
+      <div class="body">
+        {% if imgs.overlay %}
+          <img src="{{ results_dir }}/figures/{{ imgs.overlay }}" alt="overlay">
+        {% endif %}
+        {% if imgs.hist %}
+          <img src="{{ results_dir }}/figures/{{ imgs.hist }}" alt="ab-hist2d">
+        {% endif %}
+        {% if per_image[base~'.JPG'] is defined %}
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            {% for k, vals in per_image[base~'.JPG'].medians.items() %}
+              <tr>
+                <td>{{ k }}</td>
+                <td>{{ "%.2f"|format(per_image[base~'.JPG'].area_pct[k]) if per_image[base~'.JPG'].area_pct[k] is defined else "" }}</td>
+                <td>{{ "%.2f"|format(vals['a_median']) if vals['a_median'] is defined else "" }}</td>
+                <td>{{ "%.2f"|format(vals['b_median']) if vals['b_median'] is defined else "" }}</td>
+                <td>{{ "%.2f"|format(vals['C_median'])  if vals['C_median']  is defined else "" }}</td>
+                <td>{{ "%.2f"|format(vals['hue_median_deg']) if vals['hue_median_deg'] is defined else "" }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section>
+  <h2>Full metrics table (wide)</h2>
+  {% if metrics %}
+  <table>
+    <thead>
+      <tr>
+        {% for k in metrics[0].keys() %}
+        <th>{{ k }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in metrics %}
+      <tr>
+        {% for k, v in row.items() %}
+        <td>{{ v }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No metrics available.</p>
+  {% endif %}
+</section>
+
+</body>
+</html>

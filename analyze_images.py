@@ -27,26 +27,89 @@ def ecdf_vals(x):
     ys = np.arange(1, len(xs)+1) / len(xs)
     return xs, ys
 
-def dish_mask_from_hough(img_bgr, min_r, max_r, rim_erosion_pct):
-    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
-    gray_blur = cv2.medianBlur(gray, 5)
+def dish_mask_detect(img_bgr, min_r, max_r, rim_erosion_pct, left_frac=0.62):
+    """
+    Robust dish detection for your dataset:
+      - Work only on the LEFT part of the image (dish is there).
+      - Primary: segment high-saturation (HSV S) region, take largest component,
+                 fit minEnclosingCircle, validate radius & fill ratio.
+      - Fallback: HoughCircles on edges in the same ROI.
+    Returns:
+      (mask_full_res, (cx, cy, r, rim_px))  or (None, None) if not found.
+    """
+    import math
+    h, w = img_bgr.shape[:2]
+    x0, x1 = 0, int(w * left_frac)
+    roi = img_bgr[:, x0:x1]
+
+    # ---------- Primary: saturation-based segmentation ----------
+    hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+    S = hsv[:, :, 1]
+    S_blur = cv2.GaussianBlur(S, (9, 9), 0)
+    _, thr = cv2.threshold(S_blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+    # Morphology: close holes and remove small noise
+    k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11))
+    thr = cv2.morphologyEx(thr, cv2.MORPH_CLOSE, k, iterations=2)
+    thr = cv2.morphologyEx(thr, cv2.MORPH_OPEN,  k, iterations=1)
+
+    num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(thr, connectivity=8)
+    def build_mask(cx_roi, cy_roi, r):
+        cx_full = int(cx_roi + x0)
+        cy_full = int(cy_roi)
+        r = int(r)
+        if not (min_r <= r <= max_r):
+            return None, None
+        mask_full = np.zeros((h, w), dtype=np.uint8)
+        cv2.circle(mask_full, (cx_full, cy_full), r, 255, -1)
+        rim = max(1, int(r * rim_erosion_pct / 100.0))
+        ker2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * rim + 1, 2 * rim + 1))
+        eroded = cv2.erode(mask_full, ker2)
+        return eroded, (cx_full, cy_full, r, rim)
+
+    if num_labels > 1:
+        idx = 1 + np.argmax(stats[1:, cv2.CC_STAT_AREA])  # largest component (skip background)
+        comp = (labels == idx).astype(np.uint8) * 255
+        cnts, _ = cv2.findContours(comp, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if cnts:
+            c = max(cnts, key=cv2.contourArea)
+            (cx, cy), r = cv2.minEnclosingCircle(c)
+
+            # Validate: radius range + fill ratio (component area vs circle area)
+            circle_area = math.pi * (r ** 2)
+            comp_area = cv2.contourArea(c)
+            fill_ratio = comp_area / max(circle_area, 1.0)
+
+            if (min_r <= r <= max_r) and (fill_ratio > 0.45):
+                mask, info = build_mask(cx, cy, r)
+                if mask is not None:
+                    return mask, info
+
+    # ---------- Fallback: Hough on edges within same ROI ----------
+    gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+    gray = cv2.GaussianBlur(gray, (9, 9), 2)
+    edges = cv2.Canny(gray, 80, 160)
+
     circles = cv2.HoughCircles(
-        gray_blur, cv2.HOUGH_GRADIENT, dp=1.2, minDist=500,
-        param1=100, param2=40, minRadius=min_r, maxRadius=max_r
+        edges, cv2.HOUGH_GRADIENT, dp=1.0, minDist=roi.shape[0] // 2,
+        param1=120, param2=50, minRadius=min_r, maxRadius=max_r
     )
-    if circles is None:
-        return None, None
-    circles = np.uint16(np.around(circles[0]))
-    c = circles[np.argmax(circles[:,2])]
-    x, y, r = int(c[0]), int(c[1]), int(c[2])
-    mask = np.zeros(gray.shape, dtype=np.uint8)
-    cv2.circle(mask, (x, y), r, 255, thickness=-1)
-    rim = max(1, int(r * rim_erosion_pct / 100.0))
-    eroded = cv2.erode(
-        mask,
-        cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2*rim+1, 2*rim+1))
-    )
-    return eroded, (x, y, r, rim)
+    if circles is not None and len(circles[0]) > 0:
+        cs = np.uint16(np.around(circles[0]))
+
+        # Choose the circle most centered within the ROI
+        def center_margin(c):
+            cx, cy, r = int(c[0]), int(c[1]), int(c[2])
+            return min(cx, (x1 - x0) - cx, cy, roi.shape[0] - cy)
+
+        c_best = max(cs, key=center_margin)
+        cx, cy, r = int(c_best[0]), int(c_best[1]), int(c_best[2])
+        if min_r <= r <= max_r:
+            return build_mask(cx, cy, r)
+
+    return None, None
+
+
 
 def colony_mask_from_L(L, min_area_px, block_size, C):
     L_uint8 = np.clip((L/100.0)*255.0, 0, 255).astype(np.uint8)
@@ -181,7 +244,7 @@ def run(config_path):
             print(f"Could not read {ipath}")
             continue
         h, w = img.shape[:2]
-        mask_dish, circle_info = dish_mask_from_hough(img, min_r, max_r, rim_pct)
+        mask_dish, circle_info = dish_mask_detect(img, min_r, max_r, rim_pct)
         qc = {"image": os.path.basename(ipath), "width": w, "height": h, "dish_found": bool(mask_dish is not None)}
         if mask_dish is None:
             qc_rows.append(qc)

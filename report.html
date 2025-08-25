@@ -1,0 +1,5444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Biopigment – Image Cluster Report</title>
+<style>
+body { font-family: Arial, Helvetica, sans-serif; margin: 24px; color: #222; }
+h1, h2 { margin: 0.4em 0; }
+section { margin-bottom: 28px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
+th { background: #f3f3f3; }
+.small { font-size: 12px; color: #555; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; }
+.card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
+.card h3 { margin: 0; padding: 8px 12px; background: #f7f7f7; border-bottom: 1px solid #ddd; font-size: 16px; }
+.card .body { padding: 10px; }
+img { max-width: 100%; height: auto; display: block; }
+.code { font-family: Consolas, Menlo, monospace; background: #f6f6f6; padding: 2px 4px; border-radius: 4px; }
+.kv { display: grid; grid-template-columns: 180px 1fr; gap: 4px 12px; }
+</style>
+</head>
+<body>
+<h1>Biopigment – Image Cluster Report</h1>
+<p class="small">This report summarizes dish detection and a*b* clustering results. Paths are relative to the <span class="code">results/</span> directory.</p>
+
+<section>
+  <h2>Overall cluster area (mean across images)</h2>
+  
+  <table>
+    <thead><tr><th>Cluster</th><th>Mean area %</th></tr></thead>
+    <tbody>
+    
+      <tr><td>0</td><td>5.54</td></tr>
+    
+      <tr><td>1</td><td>3.10</td></tr>
+    
+      <tr><td>2</td><td>3.54</td></tr>
+    
+    </tbody>
+  </table>
+  
+</section>
+
+<section>
+  <h2>QC summary</h2>
+  
+  <table>
+    <thead>
+      <tr><th>Image</th><th>Width</th><th>Height</th><th>Dish found</th><th>Dish radius (px)</th><th>Rim erosion (px)</th><th>Colony mask</th><th>Error</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td>SAM_2648.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>751</td>
+        <td>22</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2649.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>768</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2650.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>790</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2651.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>783</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2652.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>777</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2653.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>786</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2654.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>762</td>
+        <td>22</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2655.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>780</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2656.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>823</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2657.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>806</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2658.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>786</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2659.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>805</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2660.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>795</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2661.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>812</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2662.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>783</td>
+        <td>23</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2663.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>807</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2664.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>807</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2665.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>812</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2666.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>833</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2667.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>829</td>
+        <td>24</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2668.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>839</td>
+        <td>25</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2669.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>851</td>
+        <td>25</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2670.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>879</td>
+        <td>26</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2671.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>857</td>
+        <td>25</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2672.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>838</td>
+        <td>25</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2673.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>845</td>
+        <td>25</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td>SAM_2674.JPG</td>
+        <td>4608</td>
+        <td>3456</td>
+        <td>True</td>
+        <td>839</td>
+        <td>25</td>
+        <td>False</td>
+        <td></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</section>
+
+<section>
+  <h2>Per-image montage</h2>
+  <div class="grid">
+    
+    <div class="card">
+      <h3>SAM_2648</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2648_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2648_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.78</td>
+                <td>22.00</td>
+                <td>38.00</td>
+                <td>43.86</td>
+                <td>59.53</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>1.29</td>
+                <td>3.00</td>
+                <td>12.00</td>
+                <td>13.42</td>
+                <td>70.56</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>3.41</td>
+                <td>12.00</td>
+                <td>30.00</td>
+                <td>32.57</td>
+                <td>67.75</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2649</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2649_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2649_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>4.82</td>
+                <td>13.00</td>
+                <td>30.00</td>
+                <td>32.70</td>
+                <td>66.57</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>3.64</td>
+                <td>22.00</td>
+                <td>37.00</td>
+                <td>42.72</td>
+                <td>59.74</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>2.48</td>
+                <td>7.00</td>
+                <td>18.00</td>
+                <td>19.92</td>
+                <td>68.20</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2650</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2650_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2650_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.66</td>
+                <td>25.00</td>
+                <td>41.00</td>
+                <td>48.02</td>
+                <td>58.11</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>4.98</td>
+                <td>15.00</td>
+                <td>34.00</td>
+                <td>37.16</td>
+                <td>66.57</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>0.96</td>
+                <td>1.00</td>
+                <td>11.00</td>
+                <td>11.18</td>
+                <td>83.66</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2651</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2651_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2651_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.18</td>
+                <td>16.00</td>
+                <td>34.00</td>
+                <td>37.58</td>
+                <td>65.22</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>5.53</td>
+                <td>25.00</td>
+                <td>39.00</td>
+                <td>47.01</td>
+                <td>57.26</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>0.68</td>
+                <td>1.00</td>
+                <td>7.00</td>
+                <td>7.07</td>
+                <td>75.96</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2652</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2652_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2652_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.25</td>
+                <td>13.00</td>
+                <td>31.00</td>
+                <td>33.54</td>
+                <td>67.62</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>1.74</td>
+                <td>7.00</td>
+                <td>21.00</td>
+                <td>22.14</td>
+                <td>72.35</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>4.22</td>
+                <td>20.00</td>
+                <td>39.00</td>
+                <td>44.27</td>
+                <td>63.43</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2653</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2653_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2653_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.34</td>
+                <td>28.00</td>
+                <td>40.00</td>
+                <td>49.09</td>
+                <td>55.18</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.92</td>
+                <td>7.00</td>
+                <td>19.00</td>
+                <td>20.88</td>
+                <td>70.02</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>5.21</td>
+                <td>18.00</td>
+                <td>36.00</td>
+                <td>40.31</td>
+                <td>63.43</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2654</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2654_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2654_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>4.51</td>
+                <td>13.00</td>
+                <td>33.00</td>
+                <td>35.74</td>
+                <td>68.20</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>2.51</td>
+                <td>7.00</td>
+                <td>21.00</td>
+                <td>22.36</td>
+                <td>71.57</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>3.77</td>
+                <td>20.00</td>
+                <td>39.00</td>
+                <td>44.29</td>
+                <td>62.93</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2655</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2655_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2655_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.11</td>
+                <td>11.00</td>
+                <td>30.00</td>
+                <td>31.95</td>
+                <td>69.68</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>4.05</td>
+                <td>20.00</td>
+                <td>40.00</td>
+                <td>44.38</td>
+                <td>63.43</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>2.14</td>
+                <td>6.00</td>
+                <td>18.00</td>
+                <td>18.79</td>
+                <td>72.35</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2656</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2656_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2656_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>2.10</td>
+                <td>0.00</td>
+                <td>7.00</td>
+                <td>7.07</td>
+                <td>79.70</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>6.29</td>
+                <td>27.00</td>
+                <td>39.00</td>
+                <td>47.17</td>
+                <td>54.32</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>4.20</td>
+                <td>14.00</td>
+                <td>31.00</td>
+                <td>34.48</td>
+                <td>66.50</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2657</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2657_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2657_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>6.24</td>
+                <td>23.00</td>
+                <td>36.00</td>
+                <td>42.72</td>
+                <td>58.13</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>4.78</td>
+                <td>34.00</td>
+                <td>39.00</td>
+                <td>51.22</td>
+                <td>48.81</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>1.04</td>
+                <td>11.00</td>
+                <td>19.00</td>
+                <td>22.67</td>
+                <td>58.67</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2658</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2658_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2658_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.53</td>
+                <td>24.00</td>
+                <td>36.00</td>
+                <td>43.83</td>
+                <td>56.31</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.61</td>
+                <td>13.00</td>
+                <td>22.00</td>
+                <td>26.93</td>
+                <td>60.75</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>5.34</td>
+                <td>33.00</td>
+                <td>38.00</td>
+                <td>50.45</td>
+                <td>49.03</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2659</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2659_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2659_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>4.56</td>
+                <td>20.00</td>
+                <td>35.00</td>
+                <td>40.50</td>
+                <td>60.26</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>1.63</td>
+                <td>2.00</td>
+                <td>7.00</td>
+                <td>7.62</td>
+                <td>63.43</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>5.84</td>
+                <td>11.00</td>
+                <td>23.00</td>
+                <td>25.08</td>
+                <td>64.44</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2660</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2660_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2660_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>6.55</td>
+                <td>36.00</td>
+                <td>39.00</td>
+                <td>53.04</td>
+                <td>47.23</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>4.56</td>
+                <td>26.00</td>
+                <td>36.00</td>
+                <td>45.00</td>
+                <td>53.75</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>0.64</td>
+                <td>1.00</td>
+                <td>4.00</td>
+                <td>4.47</td>
+                <td>76.76</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2661</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2661_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2661_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>4.31</td>
+                <td>27.00</td>
+                <td>36.00</td>
+                <td>45.34</td>
+                <td>52.85</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.60</td>
+                <td>2.00</td>
+                <td>8.00</td>
+                <td>9.00</td>
+                <td>69.15</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>7.34</td>
+                <td>36.00</td>
+                <td>39.00</td>
+                <td>53.15</td>
+                <td>46.51</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2662</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2662_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2662_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>6.40</td>
+                <td>37.00</td>
+                <td>40.00</td>
+                <td>54.45</td>
+                <td>47.29</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>4.66</td>
+                <td>27.00</td>
+                <td>39.00</td>
+                <td>47.20</td>
+                <td>55.30</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>0.34</td>
+                <td>5.00</td>
+                <td>18.00</td>
+                <td>19.24</td>
+                <td>73.50</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2663</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2663_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2663_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>1.33</td>
+                <td>5.00</td>
+                <td>11.00</td>
+                <td>12.81</td>
+                <td>66.04</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>4.22</td>
+                <td>23.00</td>
+                <td>34.00</td>
+                <td>40.50</td>
+                <td>56.69</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>6.53</td>
+                <td>35.00</td>
+                <td>38.00</td>
+                <td>51.62</td>
+                <td>46.59</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2664</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2664_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2664_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.25</td>
+                <td>25.00</td>
+                <td>39.00</td>
+                <td>46.14</td>
+                <td>56.66</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>5.69</td>
+                <td>36.00</td>
+                <td>40.00</td>
+                <td>53.81</td>
+                <td>48.01</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>1.14</td>
+                <td>15.00</td>
+                <td>30.00</td>
+                <td>33.29</td>
+                <td>63.43</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2665</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2665_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2665_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>8.23</td>
+                <td>37.00</td>
+                <td>38.00</td>
+                <td>53.08</td>
+                <td>45.00</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.57</td>
+                <td>4.00</td>
+                <td>8.00</td>
+                <td>9.22</td>
+                <td>61.19</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>3.44</td>
+                <td>28.00</td>
+                <td>35.00</td>
+                <td>45.22</td>
+                <td>51.55</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2666</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2666_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2666_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>6.56</td>
+                <td>27.00</td>
+                <td>37.00</td>
+                <td>45.80</td>
+                <td>53.62</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>5.12</td>
+                <td>35.00</td>
+                <td>37.00</td>
+                <td>51.62</td>
+                <td>46.59</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>1.23</td>
+                <td>18.00</td>
+                <td>30.00</td>
+                <td>35.36</td>
+                <td>59.30</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2667</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2667_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2667_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>5.29</td>
+                <td>34.00</td>
+                <td>38.00</td>
+                <td>50.99</td>
+                <td>48.09</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.61</td>
+                <td>2.00</td>
+                <td>8.00</td>
+                <td>9.06</td>
+                <td>74.74</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>6.88</td>
+                <td>23.00</td>
+                <td>36.00</td>
+                <td>42.72</td>
+                <td>57.43</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2668</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2668_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2668_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>6.45</td>
+                <td>34.00</td>
+                <td>38.00</td>
+                <td>51.22</td>
+                <td>47.73</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.38</td>
+                <td>1.00</td>
+                <td>4.00</td>
+                <td>4.47</td>
+                <td>79.70</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>6.24</td>
+                <td>23.00</td>
+                <td>36.00</td>
+                <td>43.01</td>
+                <td>57.03</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2669</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2669_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2669_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>1.11</td>
+                <td>5.00</td>
+                <td>12.00</td>
+                <td>14.32</td>
+                <td>68.20</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>7.30</td>
+                <td>29.00</td>
+                <td>38.00</td>
+                <td>48.60</td>
+                <td>52.43</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>5.05</td>
+                <td>20.00</td>
+                <td>34.00</td>
+                <td>39.36</td>
+                <td>59.35</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2670</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2670_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2670_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>4.89</td>
+                <td>22.00</td>
+                <td>38.00</td>
+                <td>44.10</td>
+                <td>59.93</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>1.33</td>
+                <td>0.00</td>
+                <td>-4.00</td>
+                <td>4.12</td>
+                <td>-90.00</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>8.13</td>
+                <td>31.00</td>
+                <td>40.00</td>
+                <td>50.61</td>
+                <td>51.91</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2671</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2671_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2671_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>8.09</td>
+                <td>35.00</td>
+                <td>39.00</td>
+                <td>52.40</td>
+                <td>47.86</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>1.05</td>
+                <td>1.00</td>
+                <td>5.00</td>
+                <td>5.39</td>
+                <td>70.56</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>4.50</td>
+                <td>25.00</td>
+                <td>36.00</td>
+                <td>44.05</td>
+                <td>55.71</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2672</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2672_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2672_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>9.05</td>
+                <td>38.00</td>
+                <td>38.00</td>
+                <td>54.45</td>
+                <td>45.00</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>0.64</td>
+                <td>2.00</td>
+                <td>7.00</td>
+                <td>7.28</td>
+                <td>70.02</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>3.34</td>
+                <td>28.00</td>
+                <td>37.00</td>
+                <td>46.10</td>
+                <td>53.37</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2673</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2673_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2673_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>7.33</td>
+                <td>24.00</td>
+                <td>37.00</td>
+                <td>44.41</td>
+                <td>57.03</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>5.49</td>
+                <td>34.00</td>
+                <td>38.00</td>
+                <td>51.22</td>
+                <td>48.27</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>0.44</td>
+                <td>0.00</td>
+                <td>8.00</td>
+                <td>8.54</td>
+                <td>90.00</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>SAM_2674</h3>
+      <div class="body">
+        
+          <img src="results/figures/SAM_2674_overlay.png" alt="overlay">
+        
+        
+          <img src="results/figures/SAM_2674_ab_hist2d.png" alt="ab-hist2d">
+        
+        
+          <h4>Cluster area (%) and medians</h4>
+          <table>
+            <thead><tr><th>Cluster</th><th>Area %</th><th>a* median</th><th>b* median</th><th>C* median</th><th>Hue median (deg)</th></tr></thead>
+            <tbody>
+            
+              <tr>
+                <td>0</td>
+                <td>8.72</td>
+                <td>38.00</td>
+                <td>39.00</td>
+                <td>54.45</td>
+                <td>45.73</td>
+              </tr>
+            
+              <tr>
+                <td>1</td>
+                <td>3.42</td>
+                <td>26.00</td>
+                <td>37.00</td>
+                <td>45.49</td>
+                <td>55.01</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>0.92</td>
+                <td>6.00</td>
+                <td>15.00</td>
+                <td>17.00</td>
+                <td>71.57</td>
+              </tr>
+            
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section>
+  <h2>Full metrics table (wide)</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        
+        <th>image</th>
+        
+        <th>K</th>
+        
+        <th>cluster</th>
+        
+        <th>pixel_count</th>
+        
+        <th>area_pct</th>
+        
+        <th>L_mean</th>
+        
+        <th>L_median</th>
+        
+        <th>L_sd</th>
+        
+        <th>L_iqr</th>
+        
+        <th>a_mean</th>
+        
+        <th>a_median</th>
+        
+        <th>a_sd</th>
+        
+        <th>a_iqr</th>
+        
+        <th>b_mean</th>
+        
+        <th>b_median</th>
+        
+        <th>b_sd</th>
+        
+        <th>b_iqr</th>
+        
+        <th>C_mean</th>
+        
+        <th>C_median</th>
+        
+        <th>hue_mean_deg</th>
+        
+        <th>hue_median_deg</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        
+        <td>SAM_2648.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>920557</td>
+        
+        <td>5.780487688480581</td>
+        
+        <td>42.2196044921875</td>
+        
+        <td>42.74509811401367</td>
+        
+        <td>3.555476665496826</td>
+        
+        <td>4.313724517822266</td>
+        
+        <td>22.95564842224121</td>
+        
+        <td>22.0</td>
+        
+        <td>4.898326873779297</td>
+        
+        <td>7.0</td>
+        
+        <td>37.5380744934082</td>
+        
+        <td>38.0</td>
+        
+        <td>2.5043652057647705</td>
+        
+        <td>3.0</td>
+        
+        <td>44.21100234985352</td>
+        
+        <td>43.863426208496094</td>
+        
+        <td>58.78749084472656</td>
+        
+        <td>59.534454345703125</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2648.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>205328</td>
+        
+        <td>1.2893237204218106</td>
+        
+        <td>49.7868537902832</td>
+        
+        <td>50.98039245605469</td>
+        
+        <td>7.772209644317627</td>
+        
+        <td>10.196075439453123</td>
+        
+        <td>3.150783061981201</td>
+        
+        <td>3.0</td>
+        
+        <td>3.644068956375122</td>
+        
+        <td>6.0</td>
+        
+        <td>10.267411231994627</td>
+        
+        <td>12.0</td>
+        
+        <td>8.028958320617676</td>
+        
+        <td>14.0</td>
+        
+        <td>12.15078067779541</td>
+        
+        <td>13.416407585144045</td>
+        
+        <td>41.32733154296875</td>
+        
+        <td>70.5599594116211</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2648.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>542962</td>
+        
+        <td>3.409441410268776</td>
+        
+        <td>47.397560119628906</td>
+        
+        <td>47.8431396484375</td>
+        
+        <td>4.658226490020752</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>12.173765182495115</td>
+        
+        <td>12.0</td>
+        
+        <td>3.3076767921447754</td>
+        
+        <td>4.0</td>
+        
+        <td>29.25859642028809</td>
+        
+        <td>30.0</td>
+        
+        <td>4.634403705596924</td>
+        
+        <td>7.0</td>
+        
+        <td>31.807924270629883</td>
+        
+        <td>32.572994232177734</td>
+        
+        <td>67.5386734008789</td>
+        
+        <td>67.75096893310547</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2649.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>768392</td>
+        
+        <td>4.824992364326132</td>
+        
+        <td>46.90670394897461</td>
+        
+        <td>47.45098114013672</td>
+        
+        <td>3.372069358825684</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>13.171138763427734</td>
+        
+        <td>13.0</td>
+        
+        <td>2.4496893882751465</td>
+        
+        <td>4.0</td>
+        
+        <td>29.87162971496582</td>
+        
+        <td>30.0</td>
+        
+        <td>3.33494234085083</td>
+        
+        <td>5.0</td>
+        
+        <td>32.69621276855469</td>
+        
+        <td>32.69556427001953</td>
+        
+        <td>66.2912368774414</td>
+        
+        <td>66.57130432128906</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2649.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>580180</td>
+        
+        <td>3.6431457770704734</td>
+        
+        <td>42.81604766845703</td>
+        
+        <td>43.13725662231445</td>
+        
+        <td>3.5686166286468506</td>
+        
+        <td>4.313728332519531</td>
+        
+        <td>22.614023208618164</td>
+        
+        <td>22.0</td>
+        
+        <td>5.1794843673706055</td>
+        
+        <td>6.0</td>
+        
+        <td>37.133060455322266</td>
+        
+        <td>37.0</td>
+        
+        <td>2.5434181690216064</td>
+        
+        <td>4.0</td>
+        
+        <td>43.672462463378906</td>
+        
+        <td>42.72002029418945</td>
+        
+        <td>58.962100982666016</td>
+        
+        <td>59.743560791015625</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2649.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>394291</td>
+        
+        <td>2.4758860898116</td>
+        
+        <td>48.21357727050781</td>
+        
+        <td>49.411766052246094</td>
+        
+        <td>5.888433456420898</td>
+        
+        <td>6.274509429931641</td>
+        
+        <td>6.876760959625244</td>
+        
+        <td>7.0</td>
+        
+        <td>2.979834079742432</td>
+        
+        <td>4.0</td>
+        
+        <td>16.993154525756836</td>
+        
+        <td>18.0</td>
+        
+        <td>5.711375713348389</td>
+        
+        <td>6.0</td>
+        
+        <td>18.59990119934082</td>
+        
+        <td>19.92485809326172</td>
+        
+        <td>64.41876983642578</td>
+        
+        <td>68.1985855102539</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2650.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>901622</td>
+        
+        <td>5.6615884411972734</td>
+        
+        <td>43.6391830444336</td>
+        
+        <td>43.92156982421875</td>
+        
+        <td>3.168017864227295</td>
+        
+        <td>4.313728332519531</td>
+        
+        <td>26.47454071044922</td>
+        
+        <td>25.0</td>
+        
+        <td>5.656175136566162</td>
+        
+        <td>8.0</td>
+        
+        <td>40.627323150634766</td>
+        
+        <td>41.0</td>
+        
+        <td>2.2419469356536865</td>
+        
+        <td>3.0</td>
+        
+        <td>48.69694519042969</td>
+        
+        <td>48.02082824707031</td>
+        
+        <td>57.230506896972656</td>
+        
+        <td>58.10920333862305</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2650.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>793312</td>
+        
+        <td>4.981473443930041</td>
+        
+        <td>47.47483825683594</td>
+        
+        <td>47.8431396484375</td>
+        
+        <td>3.810927629470825</td>
+        
+        <td>3.921566009521485</td>
+        
+        <td>14.665080070495604</td>
+        
+        <td>15.0</td>
+        
+        <td>3.186370849609375</td>
+        
+        <td>5.0</td>
+        
+        <td>33.1537971496582</td>
+        
+        <td>34.0</td>
+        
+        <td>4.381344318389893</td>
+        
+        <td>6.0</td>
+        
+        <td>36.31886672973633</td>
+        
+        <td>37.161808013916016</td>
+        
+        <td>66.29461669921875</td>
+        
+        <td>66.57130432128906</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2650.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>152461</td>
+        
+        <td>0.9573540079250256</td>
+        
+        <td>46.73518753051758</td>
+        
+        <td>46.27450942993164</td>
+        
+        <td>7.416811466217041</td>
+        
+        <td>9.411762237548828</td>
+        
+        <td>2.097100257873535</td>
+        
+        <td>1.0</td>
+        
+        <td>4.432331562042236</td>
+        
+        <td>8.0</td>
+        
+        <td>12.239956855773926</td>
+        
+        <td>11.0</td>
+        
+        <td>6.6916022300720215</td>
+        
+        <td>13.0</td>
+        
+        <td>13.012171745300291</td>
+        
+        <td>11.180339813232422</td>
+        
+        <td>89.67323303222656</td>
+        
+        <td>83.65980529785156</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2651.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>824557</td>
+        
+        <td>5.17767133045589</td>
+        
+        <td>46.71063232421875</td>
+        
+        <td>47.05882263183594</td>
+        
+        <td>3.722102880477905</td>
+        
+        <td>3.137256622314453</td>
+        
+        <td>15.428464889526367</td>
+        
+        <td>16.0</td>
+        
+        <td>3.0206704139709477</td>
+        
+        <td>4.0</td>
+        
+        <td>33.03169631958008</td>
+        
+        <td>34.0</td>
+        
+        <td>4.273337364196777</td>
+        
+        <td>5.0</td>
+        
+        <td>36.52781677246094</td>
+        
+        <td>37.57658767700195</td>
+        
+        <td>65.04846954345703</td>
+        
+        <td>65.224853515625</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2651.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>881283</td>
+        
+        <td>5.533873004677855</td>
+        
+        <td>41.99406051635742</td>
+        
+        <td>42.35294342041016</td>
+        
+        <td>3.362478494644165</td>
+        
+        <td>5.0980377197265625</td>
+        
+        <td>25.928585052490234</td>
+        
+        <td>25.0</td>
+        
+        <td>4.609703540802002</td>
+        
+        <td>7.0</td>
+        
+        <td>39.11118698120117</td>
+        
+        <td>39.0</td>
+        
+        <td>2.10759711265564</td>
+        
+        <td>2.0</td>
+        
+        <td>47.09418487548828</td>
+        
+        <td>47.01063537597656</td>
+        
+        <td>56.655181884765625</td>
+        
+        <td>57.2647705078125</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2651.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>107919</td>
+        
+        <td>0.6776597764756944</td>
+        
+        <td>47.079139709472656</td>
+        
+        <td>48.6274528503418</td>
+        
+        <td>8.581507682800293</td>
+        
+        <td>13.333335876464844</td>
+        
+        <td>2.3410706520080566</td>
+        
+        <td>1.0</td>
+        
+        <td>4.244665145874023</td>
+        
+        <td>7.0</td>
+        
+        <td>8.498503684997559</td>
+        
+        <td>7.0</td>
+        
+        <td>8.243066787719727</td>
+        
+        <td>16.0</td>
+        
+        <td>10.04785442352295</td>
+        
+        <td>7.071067810058594</td>
+        
+        <td>64.80006408691406</td>
+        
+        <td>75.96375274658203</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2652.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>835424</td>
+        
+        <td>5.245908886316872</td>
+        
+        <td>48.69486618041992</td>
+        
+        <td>49.01960754394531</td>
+        
+        <td>3.7734878063201904</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>12.641040802001951</td>
+        
+        <td>13.0</td>
+        
+        <td>2.612598180770874</td>
+        
+        <td>3.0</td>
+        
+        <td>30.71257209777832</td>
+        
+        <td>31.0</td>
+        
+        <td>3.3896706104278564</td>
+        
+        <td>5.0</td>
+        
+        <td>33.2962646484375</td>
+        
+        <td>33.541019439697266</td>
+        
+        <td>67.66278839111328</td>
+        
+        <td>67.61985778808594</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2652.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>277122</td>
+        
+        <td>1.740142445505401</td>
+        
+        <td>50.565216064453125</td>
+        
+        <td>51.37255096435547</td>
+        
+        <td>6.046169757843018</td>
+        
+        <td>6.666664123535156</td>
+        
+        <td>6.027728080749512</td>
+        
+        <td>7.0</td>
+        
+        <td>3.572011947631836</td>
+        
+        <td>6.0</td>
+        
+        <td>18.681201934814453</td>
+        
+        <td>21.0</td>
+        
+        <td>5.754435062408447</td>
+        
+        <td>7.0</td>
+        
+        <td>19.83237838745117</td>
+        
+        <td>22.13594436645508</td>
+        
+        <td>73.51485443115234</td>
+        
+        <td>72.3498764038086</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2652.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>672717</td>
+        
+        <td>4.224216790846836</td>
+        
+        <td>44.90123748779297</td>
+        
+        <td>45.490196228027344</td>
+        
+        <td>3.79742431640625</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>21.23373794555664</td>
+        
+        <td>20.0</td>
+        
+        <td>5.35498046875</td>
+        
+        <td>7.0</td>
+        
+        <td>39.14031600952149</td>
+        
+        <td>39.0</td>
+        
+        <td>2.679696798324585</td>
+        
+        <td>4.0</td>
+        
+        <td>44.752742767333984</td>
+        
+        <td>44.27188873291016</td>
+        
+        <td>61.82290649414063</td>
+        
+        <td>63.4349479675293</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2653.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>851123</td>
+        
+        <td>5.344488198865098</td>
+        
+        <td>41.41025924682617</td>
+        
+        <td>41.568626403808594</td>
+        
+        <td>3.743328094482422</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>28.717538833618164</td>
+        
+        <td>28.0</td>
+        
+        <td>4.52254581451416</td>
+        
+        <td>7.0</td>
+        
+        <td>40.15786361694336</td>
+        
+        <td>40.0</td>
+        
+        <td>2.548205614089966</td>
+        
+        <td>3.0</td>
+        
+        <td>49.53414535522461</td>
+        
+        <td>49.09175109863281</td>
+        
+        <td>54.574344635009766</td>
+        
+        <td>55.17550659179688</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2653.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>146665</td>
+        
+        <td>0.920958970309285</td>
+        
+        <td>46.80294036865234</td>
+        
+        <td>47.8431396484375</td>
+        
+        <td>7.844836235046387</td>
+        
+        <td>11.372547149658203</td>
+        
+        <td>5.98382043838501</td>
+        
+        <td>7.0</td>
+        
+        <td>5.481038093566895</td>
+        
+        <td>9.0</td>
+        
+        <td>16.669164657592773</td>
+        
+        <td>19.0</td>
+        
+        <td>7.405619621276855</td>
+        
+        <td>13.0</td>
+        
+        <td>18.177265167236328</td>
+        
+        <td>20.880613327026367</td>
+        
+        <td>76.68888854980469</td>
+        
+        <td>70.01688385009766</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2653.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>830295</td>
+        
+        <td>5.213702166521991</td>
+        
+        <td>45.24980163574219</td>
+        
+        <td>46.27450942993164</td>
+        
+        <td>4.755319118499756</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>18.3050479888916</td>
+        
+        <td>18.0</td>
+        
+        <td>3.2575159072875977</td>
+        
+        <td>5.0</td>
+        
+        <td>35.07997131347656</td>
+        
+        <td>36.0</td>
+        
+        <td>4.153377056121826</td>
+        
+        <td>5.0</td>
+        
+        <td>39.67201232910156</td>
+        
+        <td>40.31128692626953</td>
+        
+        <td>62.4660758972168</td>
+        
+        <td>63.4349479675293</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2654.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>718749</td>
+        
+        <td>4.513267234519676</td>
+        
+        <td>48.42583847045898</td>
+        
+        <td>48.6274528503418</td>
+        
+        <td>2.6280877590179443</td>
+        
+        <td>3.137256622314453</td>
+        
+        <td>13.068172454833984</td>
+        
+        <td>13.0</td>
+        
+        <td>2.1964566707611084</td>
+        
+        <td>3.0</td>
+        
+        <td>32.69068145751953</td>
+        
+        <td>33.0</td>
+        
+        <td>3.1232595443725586</td>
+        
+        <td>5.0</td>
+        
+        <td>35.24286651611328</td>
+        
+        <td>35.735137939453125</td>
+        
+        <td>68.27991485595703</td>
+        
+        <td>68.1985855102539</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2654.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>399753</td>
+        
+        <td>2.51018382884838</td>
+        
+        <td>51.3297004699707</td>
+        
+        <td>51.76470565795898</td>
+        
+        <td>4.385063171386719</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>6.500646591186523</td>
+        
+        <td>7.0</td>
+        
+        <td>2.930183172225952</td>
+        
+        <td>4.0</td>
+        
+        <td>19.716110229492188</td>
+        
+        <td>21.0</td>
+        
+        <td>5.816878318786621</td>
+        
+        <td>7.0</td>
+        
+        <td>20.86038398742676</td>
+        
+        <td>22.360679626464844</td>
+        
+        <td>72.74517822265625</td>
+        
+        <td>71.56504821777344</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2654.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>601125</td>
+        
+        <td>3.774666491849923</td>
+        
+        <td>44.75075912475586</td>
+        
+        <td>45.09804153442383</td>
+        
+        <td>2.8624095916748047</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>20.678884506225582</td>
+        
+        <td>20.0</td>
+        
+        <td>3.830578088760376</td>
+        
+        <td>5.0</td>
+        
+        <td>39.30923461914063</td>
+        
+        <td>39.0</td>
+        
+        <td>1.87193500995636</td>
+        
+        <td>2.0</td>
+        
+        <td>44.54352569580078</td>
+        
+        <td>44.29446792602539</td>
+        
+        <td>62.3977165222168</td>
+        
+        <td>62.92791748046875</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2655.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>814213</td>
+        
+        <td>5.11271786787873</td>
+        
+        <td>50.35881805419922</td>
+        
+        <td>50.19607925415039</td>
+        
+        <td>2.8126473426818848</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>10.930948257446287</td>
+        
+        <td>11.0</td>
+        
+        <td>2.3098652362823486</td>
+        
+        <td>4.0</td>
+        
+        <td>29.61333656311035</td>
+        
+        <td>30.0</td>
+        
+        <td>3.850894689559937</td>
+        
+        <td>7.0</td>
+        
+        <td>31.60001373291016</td>
+        
+        <td>31.95309066772461</td>
+        
+        <td>69.86346435546875</td>
+        
+        <td>69.6768569946289</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2655.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>645275</td>
+        
+        <td>4.051899223170653</td>
+        
+        <td>45.71356964111328</td>
+        
+        <td>46.27450942993164</td>
+        
+        <td>3.50867223739624</td>
+        
+        <td>4.313724517822266</td>
+        
+        <td>21.30883026123047</td>
+        
+        <td>20.0</td>
+        
+        <td>6.0290303230285645</td>
+        
+        <td>9.0</td>
+        
+        <td>39.6525993347168</td>
+        
+        <td>40.0</td>
+        
+        <td>2.6312918663024902</td>
+        
+        <td>3.0</td>
+        
+        <td>45.255653381347656</td>
+        
+        <td>44.38468170166016</td>
+        
+        <td>62.205055236816406</td>
+        
+        <td>63.4349479675293</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2655.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>340023</td>
+        
+        <td>2.135119026089892</td>
+        
+        <td>51.91299819946289</td>
+        
+        <td>52.94117736816406</td>
+        
+        <td>5.66292667388916</td>
+        
+        <td>6.274509429931641</td>
+        
+        <td>4.7031965255737305</td>
+        
+        <td>6.0</td>
+        
+        <td>3.030762195587158</td>
+        
+        <td>4.0</td>
+        
+        <td>15.301864624023438</td>
+        
+        <td>18.0</td>
+        
+        <td>7.069225788116455</td>
+        
+        <td>7.0</td>
+        
+        <td>16.401966094970703</td>
+        
+        <td>18.788293838500977</td>
+        
+        <td>62.737884521484375</td>
+        
+        <td>72.3498764038086</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2656.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>334265</td>
+        
+        <td>2.098962603282536</td>
+        
+        <td>51.65860748291016</td>
+        
+        <td>55.68627548217773</td>
+        
+        <td>9.51276969909668</td>
+        
+        <td>15.686275482177734</td>
+        
+        <td>0.5992939472198486</td>
+        
+        <td>0.0</td>
+        
+        <td>2.978416919708252</td>
+        
+        <td>3.0</td>
+        
+        <td>6.9985432624816895</td>
+        
+        <td>7.0</td>
+        
+        <td>6.761748790740967</td>
+        
+        <td>13.0</td>
+        
+        <td>8.201911926269531</td>
+        
+        <td>7.071067810058594</td>
+        
+        <td>45.76805114746094</td>
+        
+        <td>79.69514465332031</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2656.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>1000971</td>
+        
+        <td>6.285434299045139</td>
+        
+        <td>39.610958099365234</td>
+        
+        <td>40.0</td>
+        
+        <td>4.54677677154541</td>
+        
+        <td>5.882350921630859</td>
+        
+        <td>27.6845645904541</td>
+        
+        <td>27.0</td>
+        
+        <td>5.347313404083252</td>
+        
+        <td>9.0</td>
+        
+        <td>38.15282440185547</td>
+        
+        <td>39.0</td>
+        
+        <td>3.082056999206543</td>
+        
+        <td>3.0</td>
+        
+        <td>47.3846549987793</td>
+        
+        <td>47.16990661621094</td>
+        
+        <td>54.24386596679688</td>
+        
+        <td>54.32358932495117</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2656.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>669555</td>
+        
+        <td>4.204361527054398</td>
+        
+        <td>46.42595291137695</td>
+        
+        <td>47.45098114013672</td>
+        
+        <td>6.851892471313477</td>
+        
+        <td>7.450981140136719</td>
+        
+        <td>13.976080894470217</td>
+        
+        <td>14.0</td>
+        
+        <td>4.224290370941162</td>
+        
+        <td>6.0</td>
+        
+        <td>30.321453094482425</td>
+        
+        <td>31.0</td>
+        
+        <td>5.506514072418213</td>
+        
+        <td>9.0</td>
+        
+        <td>33.568641662597656</td>
+        
+        <td>34.48188018798828</td>
+        
+        <td>65.46627044677734</td>
+        
+        <td>66.50142669677734</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2657.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>993486</td>
+        
+        <td>6.238433461130401</td>
+        
+        <td>42.660377502441406</td>
+        
+        <td>42.74509811401367</td>
+        
+        <td>3.102012872695923</td>
+        
+        <td>3.1372528076171875</td>
+        
+        <td>22.19143867492676</td>
+        
+        <td>23.0</td>
+        
+        <td>3.719661712646485</td>
+        
+        <td>5.0</td>
+        
+        <td>35.40333557128906</td>
+        
+        <td>36.0</td>
+        
+        <td>3.4785757064819336</td>
+        
+        <td>4.0</td>
+        
+        <td>41.86397552490234</td>
+        
+        <td>42.72002029418945</td>
+        
+        <td>58.06502532958984</td>
+        
+        <td>58.13401794433594</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2657.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>761763</td>
+        
+        <td>4.783366638937114</td>
+        
+        <td>37.535400390625</td>
+        
+        <td>38.03921508789063</td>
+        
+        <td>3.1443405151367188</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>34.31217956542969</td>
+        
+        <td>34.0</td>
+        
+        <td>4.311329364776611</td>
+        
+        <td>8.0</td>
+        
+        <td>38.44656753540039</td>
+        
+        <td>39.0</td>
+        
+        <td>1.7495958805084229</td>
+        
+        <td>2.0</td>
+        
+        <td>51.64686584472656</td>
+        
+        <td>51.22499465942383</td>
+        
+        <td>48.41538238525391</td>
+        
+        <td>48.81407165527344</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2657.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>165098</td>
+        
+        <td>1.0367059903870883</td>
+        
+        <td>41.70606994628906</td>
+        
+        <td>42.74509811401367</td>
+        
+        <td>6.916239738464356</td>
+        
+        <td>9.019607543945312</td>
+        
+        <td>9.415032386779783</td>
+        
+        <td>11.0</td>
+        
+        <td>5.685844898223877</td>
+        
+        <td>8.0</td>
+        
+        <td>15.373626708984377</td>
+        
+        <td>19.0</td>
+        
+        <td>9.744891166687012</td>
+        
+        <td>14.0</td>
+        
+        <td>18.879255294799805</td>
+        
+        <td>22.67156791687012</td>
+        
+        <td>38.038761138916016</td>
+        
+        <td>58.67130279541016</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2658.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>880348</td>
+        
+        <td>5.528001824524177</td>
+        
+        <td>41.84205627441406</td>
+        
+        <td>41.960784912109375</td>
+        
+        <td>3.0148847103118896</td>
+        
+        <td>3.1372528076171875</td>
+        
+        <td>23.77961158752441</td>
+        
+        <td>24.0</td>
+        
+        <td>3.3429977893829346</td>
+        
+        <td>4.0</td>
+        
+        <td>35.73323440551758</td>
+        
+        <td>36.0</td>
+        
+        <td>2.7821521759033203</td>
+        
+        <td>4.0</td>
+        
+        <td>42.99293899536133</td>
+        
+        <td>43.8292121887207</td>
+        
+        <td>56.469688415527344</td>
+        
+        <td>56.30993270874024</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2658.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>97450</td>
+        
+        <td>0.6119213967656894</td>
+        
+        <td>40.21425247192383</td>
+        
+        <td>40.7843132019043</td>
+        
+        <td>6.831818580627441</td>
+        
+        <td>10.19607925415039</td>
+        
+        <td>11.578542709350586</td>
+        
+        <td>13.0</td>
+        
+        <td>6.236786365509033</td>
+        
+        <td>8.0</td>
+        
+        <td>19.500974655151367</td>
+        
+        <td>22.0</td>
+        
+        <td>8.65418529510498</td>
+        
+        <td>10.0</td>
+        
+        <td>23.00672721862793</td>
+        
+        <td>26.92582321166992</td>
+        
+        <td>61.25942611694336</td>
+        
+        <td>60.75116729736328</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2658.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>850285</td>
+        
+        <td>5.339226114406507</td>
+        
+        <td>37.96691131591797</td>
+        
+        <td>38.03921508789063</td>
+        
+        <td>2.4160773754119877</td>
+        
+        <td>3.137256622314453</td>
+        
+        <td>33.482666015625</td>
+        
+        <td>33.0</td>
+        
+        <td>3.431625366210937</td>
+        
+        <td>5.0</td>
+        
+        <td>38.0771484375</td>
+        
+        <td>38.0</td>
+        
+        <td>1.6068352460861206</td>
+        
+        <td>2.0</td>
+        
+        <td>50.7762565612793</td>
+        
+        <td>50.44799423217773</td>
+        
+        <td>48.77362823486328</td>
+        
+        <td>49.02825927734375</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2659.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>726293</td>
+        
+        <td>4.560638553321116</td>
+        
+        <td>42.80469512939453</td>
+        
+        <td>43.13725662231445</td>
+        
+        <td>3.186600685119629</td>
+        
+        <td>3.92156982421875</td>
+        
+        <td>21.10452461242676</td>
+        
+        <td>20.0</td>
+        
+        <td>5.457667350769043</td>
+        
+        <td>7.0</td>
+        
+        <td>35.10593032836914</td>
+        
+        <td>35.0</td>
+        
+        <td>3.3602664470672607</td>
+        
+        <td>6.0</td>
+        
+        <td>41.11656951904297</td>
+        
+        <td>40.49691390991211</td>
+        
+        <td>59.43575286865234</td>
+        
+        <td>60.25511169433594</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2659.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>259366</td>
+        
+        <td>1.6286465366190843</td>
+        
+        <td>47.91005706787109</td>
+        
+        <td>49.01960754394531</td>
+        
+        <td>6.515134811401367</td>
+        
+        <td>6.666664123535156</td>
+        
+        <td>1.9732270240783687</td>
+        
+        <td>2.0</td>
+        
+        <td>3.804184675216675</td>
+        
+        <td>7.0</td>
+        
+        <td>5.761576175689697</td>
+        
+        <td>7.0</td>
+        
+        <td>5.754458427429199</td>
+        
+        <td>11.0</td>
+        
+        <td>7.790960788726807</td>
+        
+        <td>7.6157732009887695</td>
+        
+        <td>26.353443145751957</td>
+        
+        <td>63.4349479675293</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2659.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>929804</td>
+        
+        <td>5.838552718299897</td>
+        
+        <td>46.5653190612793</td>
+        
+        <td>47.05882263183594</td>
+        
+        <td>4.408110618591309</td>
+        
+        <td>4.313724517822266</td>
+        
+        <td>10.77292537689209</td>
+        
+        <td>11.0</td>
+        
+        <td>2.756007432937622</td>
+        
+        <td>4.0</td>
+        
+        <td>22.56720352172852</td>
+        
+        <td>23.0</td>
+        
+        <td>4.419869422912598</td>
+        
+        <td>7.0</td>
+        
+        <td>25.08188247680664</td>
+        
+        <td>25.079872131347656</td>
+        
+        <td>64.52210235595703</td>
+        
+        <td>64.44003295898438</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2660.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1043664</td>
+        
+        <td>6.553518036265432</td>
+        
+        <td>36.97998046875</td>
+        
+        <td>37.25490188598633</td>
+        
+        <td>2.074735641479492</td>
+        
+        <td>2.745098114013672</td>
+        
+        <td>36.34860610961914</td>
+        
+        <td>36.0</td>
+        
+        <td>3.516554117202759</td>
+        
+        <td>6.0</td>
+        
+        <td>38.56324768066406</td>
+        
+        <td>39.0</td>
+        
+        <td>1.499759554862976</td>
+        
+        <td>2.0</td>
+        
+        <td>53.05519485473633</td>
+        
+        <td>53.037723541259766</td>
+        
+        <td>46.79608154296875</td>
+        
+        <td>47.23117065429688</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2660.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>726112</td>
+        
+        <td>4.559501993312757</td>
+        
+        <td>40.16624069213867</td>
+        
+        <td>40.39215850830078</td>
+        
+        <td>3.4937620162963867</td>
+        
+        <td>3.137256622314453</td>
+        
+        <td>25.26094055175781</td>
+        
+        <td>26.0</td>
+        
+        <td>4.386185646057129</td>
+        
+        <td>6.0</td>
+        
+        <td>35.03539276123047</td>
+        
+        <td>36.0</td>
+        
+        <td>4.086142539978027</td>
+        
+        <td>4.0</td>
+        
+        <td>43.29196166992188</td>
+        
+        <td>45.0</td>
+        
+        <td>54.36465835571289</td>
+        
+        <td>53.74615859985352</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2660.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>101751</td>
+        
+        <td>0.638928825472608</td>
+        
+        <td>40.97921752929688</td>
+        
+        <td>40.7843132019043</td>
+        
+        <td>6.594232082366943</td>
+        
+        <td>5.882350921630859</td>
+        
+        <td>3.012265205383301</td>
+        
+        <td>1.0</td>
+        
+        <td>4.9850006103515625</td>
+        
+        <td>6.0</td>
+        
+        <td>7.756533145904541</td>
+        
+        <td>4.0</td>
+        
+        <td>7.500462532043457</td>
+        
+        <td>13.0</td>
+        
+        <td>8.899229049682617</td>
+        
+        <td>4.4721360206604</td>
+        
+        <td>78.50346374511719</td>
+        
+        <td>76.75947570800781</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2661.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>685839</td>
+        
+        <td>4.306614251784336</td>
+        
+        <td>39.49697113037109</td>
+        
+        <td>40.0</td>
+        
+        <td>4.042570114135742</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>26.48325538635254</td>
+        
+        <td>27.0</td>
+        
+        <td>4.115081310272217</td>
+        
+        <td>6.0</td>
+        
+        <td>35.20198440551758</td>
+        
+        <td>36.0</td>
+        
+        <td>3.820290088653565</td>
+        
+        <td>5.0</td>
+        
+        <td>44.17737579345703</td>
+        
+        <td>45.34313583374024</td>
+        
+        <td>53.13346862792969</td>
+        
+        <td>52.853309631347656</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2661.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>95335</td>
+        
+        <td>0.5986405988779578</td>
+        
+        <td>42.970436096191406</td>
+        
+        <td>41.568626403808594</td>
+        
+        <td>7.574270725250244</td>
+        
+        <td>8.627452850341797</td>
+        
+        <td>4.097980976104736</td>
+        
+        <td>2.0</td>
+        
+        <td>4.870760917663574</td>
+        
+        <td>7.0</td>
+        
+        <td>9.626129150390623</td>
+        
+        <td>8.0</td>
+        
+        <td>7.168397426605225</td>
+        
+        <td>10.0</td>
+        
+        <td>11.225908279418944</td>
+        
+        <td>9.0</td>
+        
+        <td>51.63790130615234</td>
+        
+        <td>69.14553833007812</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2661.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>1168777</td>
+        
+        <td>7.339144734198173</td>
+        
+        <td>36.5459213256836</td>
+        
+        <td>36.86274719238281</td>
+        
+        <td>2.54761290550232</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>37.0268669128418</td>
+        
+        <td>36.0</td>
+        
+        <td>3.595550298690796</td>
+        
+        <td>6.0</td>
+        
+        <td>38.66550064086914</td>
+        
+        <td>39.0</td>
+        
+        <td>1.570793628692627</td>
+        
+        <td>2.0</td>
+        
+        <td>53.60279083251953</td>
+        
+        <td>53.15073013305664</td>
+        
+        <td>46.34270095825195</td>
+        
+        <td>46.50743103027344</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2662.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1018427</td>
+        
+        <td>6.395046406812629</td>
+        
+        <td>37.37759017944336</td>
+        
+        <td>37.64706039428711</td>
+        
+        <td>2.496479034423828</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>36.93783950805664</td>
+        
+        <td>37.0</td>
+        
+        <td>3.3063228130340576</td>
+        
+        <td>5.0</td>
+        
+        <td>39.76593780517578</td>
+        
+        <td>40.0</td>
+        
+        <td>1.6321710348129272</td>
+        
+        <td>2.0</td>
+        
+        <td>54.34440994262695</td>
+        
+        <td>54.45181274414063</td>
+        
+        <td>47.19044876098633</td>
+        
+        <td>47.29060745239258</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2662.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>741328</td>
+        
+        <td>4.655048386059671</td>
+        
+        <td>42.56953430175781</td>
+        
+        <td>42.35294342041016</td>
+        
+        <td>3.652100801467896</td>
+        
+        <td>4.313724517822266</td>
+        
+        <td>26.131086349487305</td>
+        
+        <td>27.0</td>
+        
+        <td>3.855957269668579</td>
+        
+        <td>5.0</td>
+        
+        <td>38.18657684326172</td>
+        
+        <td>39.0</td>
+        
+        <td>3.0642874240875244</td>
+        
+        <td>3.0</td>
+        
+        <td>46.363525390625</td>
+        
+        <td>47.20169448852539</td>
+        
+        <td>55.74744415283203</td>
+        
+        <td>55.30484390258789</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2662.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>54004</td>
+        
+        <td>0.3391093187371399</td>
+        
+        <td>45.06501388549805</td>
+        
+        <td>45.490196228027344</td>
+        
+        <td>8.053740501403809</td>
+        
+        <td>11.372550964355469</td>
+        
+        <td>5.927579402923584</td>
+        
+        <td>5.0</td>
+        
+        <td>6.5925397872924805</td>
+        
+        <td>12.0</td>
+        
+        <td>17.212003707885742</td>
+        
+        <td>18.0</td>
+        
+        <td>7.930360317230225</td>
+        
+        <td>16.0</td>
+        
+        <td>18.8370361328125</td>
+        
+        <td>19.23538398742676</td>
+        
+        <td>78.71977996826172</td>
+        
+        <td>73.4956283569336</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2663.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>211894</td>
+        
+        <td>1.3305538475758745</td>
+        
+        <td>45.73051452636719</td>
+        
+        <td>46.27450942993164</td>
+        
+        <td>8.081550598144531</td>
+        
+        <td>9.80392074584961</td>
+        
+        <td>5.404867649078369</td>
+        
+        <td>5.0</td>
+        
+        <td>5.611783027648926</td>
+        
+        <td>10.0</td>
+        
+        <td>10.284605026245115</td>
+        
+        <td>11.0</td>
+        
+        <td>7.781507968902588</td>
+        
+        <td>15.0</td>
+        
+        <td>12.213701248168944</td>
+        
+        <td>12.806248664855955</td>
+        
+        <td>70.76092529296875</td>
+        
+        <td>66.03750610351562</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2663.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>672727</td>
+        
+        <td>4.224279584217464</td>
+        
+        <td>41.36125946044922</td>
+        
+        <td>42.35294342041016</td>
+        
+        <td>5.422731876373291</td>
+        
+        <td>6.274513244628906</td>
+        
+        <td>21.71675109863281</td>
+        
+        <td>23.0</td>
+        
+        <td>4.768672943115234</td>
+        
+        <td>8.0</td>
+        
+        <td>32.55175018310547</td>
+        
+        <td>34.0</td>
+        
+        <td>5.229476451873779</td>
+        
+        <td>8.0</td>
+        
+        <td>39.34775924682617</td>
+        
+        <td>40.49691390991211</td>
+        
+        <td>56.368648529052734</td>
+        
+        <td>56.68936538696289</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2663.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>1040638</td>
+        
+        <td>6.534516762313529</td>
+        
+        <td>36.38728332519531</td>
+        
+        <td>36.47058868408203</td>
+        
+        <td>3.30839467048645</td>
+        
+        <td>4.705879211425781</td>
+        
+        <td>35.24502944946289</td>
+        
+        <td>35.0</td>
+        
+        <td>4.352564811706543</td>
+        
+        <td>7.0</td>
+        
+        <td>37.3472785949707</td>
+        
+        <td>38.0</td>
+        
+        <td>2.3602657318115234</td>
+        
+        <td>3.0</td>
+        
+        <td>51.47199630737305</td>
+        
+        <td>51.62363815307617</td>
+        
+        <td>46.79868698120117</td>
+        
+        <td>46.59114074707031</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2664.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>836435</td>
+        
+        <td>5.25225729608732</td>
+        
+        <td>43.30730438232422</td>
+        
+        <td>43.13725662231445</td>
+        
+        <td>2.4314560890197754</td>
+        
+        <td>3.137256622314453</td>
+        
+        <td>25.043907165527344</td>
+        
+        <td>25.0</td>
+        
+        <td>3.4536473751068115</td>
+        
+        <td>6.0</td>
+        
+        <td>38.2819938659668</td>
+        
+        <td>39.0</td>
+        
+        <td>1.9912691116333008</td>
+        
+        <td>3.0</td>
+        
+        <td>45.81905746459961</td>
+        
+        <td>46.14108657836914</td>
+        
+        <td>56.94519805908203</td>
+        
+        <td>56.65928649902344</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2664.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>906539</td>
+        
+        <td>5.692463941534851</td>
+        
+        <td>38.236602783203125</td>
+        
+        <td>38.431373596191406</td>
+        
+        <td>2.486133575439453</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>36.28334426879883</td>
+        
+        <td>36.0</td>
+        
+        <td>3.635277509689331</td>
+        
+        <td>6.0</td>
+        
+        <td>39.861454010009766</td>
+        
+        <td>40.0</td>
+        
+        <td>1.4657063484191897</td>
+        
+        <td>2.0</td>
+        
+        <td>53.9805908203125</td>
+        
+        <td>53.81449508666992</td>
+        
+        <td>47.79705047607422</td>
+        
+        <td>48.01278305053711</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2664.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>182285</td>
+        
+        <td>1.1446289564846963</td>
+        
+        <td>45.32671356201172</td>
+        
+        <td>46.27450942993164</td>
+        
+        <td>6.000341415405273</td>
+        
+        <td>7.0588226318359375</td>
+        
+        <td>13.539759635925291</td>
+        
+        <td>15.0</td>
+        
+        <td>4.319032669067383</td>
+        
+        <td>6.0</td>
+        
+        <td>27.42604255676269</td>
+        
+        <td>30.0</td>
+        
+        <td>6.994479179382324</td>
+        
+        <td>9.0</td>
+        
+        <td>30.70200729370117</td>
+        
+        <td>33.2866325378418</td>
+        
+        <td>64.08831787109375</td>
+        
+        <td>63.4349479675293</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2665.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1310315</td>
+        
+        <td>8.227909543386703</td>
+        
+        <td>35.18645477294922</td>
+        
+        <td>35.29411697387695</td>
+        
+        <td>2.5341546535491943</td>
+        
+        <td>3.5294151306152344</td>
+        
+        <td>37.37531280517578</td>
+        
+        <td>37.0</td>
+        
+        <td>3.1741042137146</td>
+        
+        <td>5.0</td>
+        
+        <td>37.574615478515625</td>
+        
+        <td>38.0</td>
+        
+        <td>1.6450892686843872</td>
+        
+        <td>2.0</td>
+        
+        <td>53.05825424194336</td>
+        
+        <td>53.075416564941406</td>
+        
+        <td>45.226356506347656</td>
+        
+        <td>45.0</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2665.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>91049</td>
+        
+        <td>0.5717273602269805</td>
+        
+        <td>44.247108459472656</td>
+        
+        <td>43.92156982421875</td>
+        
+        <td>5.5782880783081055</td>
+        
+        <td>6.274509429931641</td>
+        
+        <td>5.3748860359191895</td>
+        
+        <td>4.0</td>
+        
+        <td>5.120088577270508</td>
+        
+        <td>8.0</td>
+        
+        <td>9.080275535583496</td>
+        
+        <td>8.0</td>
+        
+        <td>7.462990760803223</td>
+        
+        <td>14.0</td>
+        
+        <td>10.912128448486328</td>
+        
+        <td>9.219544410705566</td>
+        
+        <td>57.07689666748047</td>
+        
+        <td>61.18920135498047</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2665.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>548587</td>
+        
+        <td>3.444762681246785</td>
+        
+        <td>38.50807189941406</td>
+        
+        <td>38.82352828979492</td>
+        
+        <td>4.430762767791748</td>
+        
+        <td>5.098041534423828</td>
+        
+        <td>27.02776336669922</td>
+        
+        <td>28.0</td>
+        
+        <td>4.169063091278076</td>
+        
+        <td>5.0</td>
+        
+        <td>34.19727325439453</td>
+        
+        <td>35.0</td>
+        
+        <td>4.037793159484863</td>
+        
+        <td>5.0</td>
+        
+        <td>43.71382141113281</td>
+        
+        <td>45.221675872802734</td>
+        
+        <td>51.75545120239258</td>
+        
+        <td>51.54628753662109</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2666.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1044539</td>
+        
+        <td>6.559012456195345</td>
+        
+        <td>41.71637344360352</td>
+        
+        <td>41.568626403808594</td>
+        
+        <td>2.3850443363189697</td>
+        
+        <td>2.745098114013672</td>
+        
+        <td>26.913747787475582</td>
+        
+        <td>27.0</td>
+        
+        <td>2.924966335296631</td>
+        
+        <td>5.0</td>
+        
+        <td>36.60202026367188</td>
+        
+        <td>37.0</td>
+        
+        <td>1.723224401473999</td>
+        
+        <td>2.0</td>
+        
+        <td>45.49047470092773</td>
+        
+        <td>45.80392837524414</td>
+        
+        <td>53.76018524169922</td>
+        
+        <td>53.61564636230469</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2666.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>814919</td>
+        
+        <td>5.117151079845036</td>
+        
+        <td>37.47069549560547</td>
+        
+        <td>37.64706039428711</td>
+        
+        <td>2.420295476913452</td>
+        
+        <td>3.137256622314453</td>
+        
+        <td>35.76507568359375</td>
+        
+        <td>35.0</td>
+        
+        <td>3.012911081314087</td>
+        
+        <td>5.0</td>
+        
+        <td>37.15996170043945</td>
+        
+        <td>37.0</td>
+        
+        <td>1.5070244073867798</td>
+        
+        <td>2.0</td>
+        
+        <td>51.64089584350586</td>
+        
+        <td>51.62363815307617</td>
+        
+        <td>46.16748428344727</td>
+        
+        <td>46.59114074707031</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2666.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>195797</td>
+        
+        <td>1.2294753588766718</td>
+        
+        <td>42.56120300292969</td>
+        
+        <td>43.92156982421875</td>
+        
+        <td>5.888282775878906</td>
+        
+        <td>5.882350921630859</td>
+        
+        <td>17.097570419311523</td>
+        
+        <td>18.0</td>
+        
+        <td>4.47146463394165</td>
+        
+        <td>4.0</td>
+        
+        <td>28.052494049072266</td>
+        
+        <td>30.0</td>
+        
+        <td>6.30943775177002</td>
+        
+        <td>6.0</td>
+        
+        <td>33.0153923034668</td>
+        
+        <td>35.35533905029297</td>
+        
+        <td>59.04548263549805</td>
+        
+        <td>59.30027389526367</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2667.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>842537</td>
+        
+        <td>5.290573810844265</td>
+        
+        <td>38.6075325012207</td>
+        
+        <td>38.82352828979492</td>
+        
+        <td>3.169081687927246</td>
+        
+        <td>4.313724517822266</td>
+        
+        <td>34.818939208984375</td>
+        
+        <td>34.0</td>
+        
+        <td>4.274092197418213</td>
+        
+        <td>7.0</td>
+        
+        <td>37.81288909912109</td>
+        
+        <td>38.0</td>
+        
+        <td>1.9269098043441768</td>
+        
+        <td>2.0</td>
+        
+        <td>51.51993179321289</td>
+        
+        <td>50.990196228027344</td>
+        
+        <td>47.51436233520508</td>
+        
+        <td>48.09405517578125</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2667.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>97461</td>
+        
+        <td>0.6119904694733797</td>
+        
+        <td>44.90689468383789</td>
+        
+        <td>45.882354736328125</td>
+        
+        <td>7.782498359680176</td>
+        
+        <td>10.980392456054688</td>
+        
+        <td>3.706200361251831</td>
+        
+        <td>2.0</td>
+        
+        <td>5.724952697753906</td>
+        
+        <td>10.0</td>
+        
+        <td>10.523296356201172</td>
+        
+        <td>8.0</td>
+        
+        <td>8.149524688720703</td>
+        
+        <td>16.0</td>
+        
+        <td>12.01160717010498</td>
+        
+        <td>9.05538558959961</td>
+        
+        <td>86.15113830566406</td>
+        
+        <td>74.74488067626953</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2667.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>1094969</td>
+        
+        <td>6.87567942427019</td>
+        
+        <td>44.73900985717773</td>
+        
+        <td>44.70588302612305</td>
+        
+        <td>3.047546863555908</td>
+        
+        <td>3.92156982421875</td>
+        
+        <td>22.55416488647461</td>
+        
+        <td>23.0</td>
+        
+        <td>4.006846904754639</td>
+        
+        <td>6.0</td>
+        
+        <td>34.98804473876953</td>
+        
+        <td>36.0</td>
+        
+        <td>3.385720729827881</td>
+        
+        <td>3.0</td>
+        
+        <td>41.6968879699707</td>
+        
+        <td>42.72002029418945</td>
+        
+        <td>57.42116165161133</td>
+        
+        <td>57.42593765258789</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2668.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1027111</td>
+        
+        <td>6.449576169865612</td>
+        
+        <td>38.29838943481445</td>
+        
+        <td>38.431373596191406</td>
+        
+        <td>2.967113256454468</td>
+        
+        <td>3.92156982421875</td>
+        
+        <td>34.941795349121094</td>
+        
+        <td>34.0</td>
+        
+        <td>4.062739372253418</td>
+        
+        <td>6.0</td>
+        
+        <td>37.8935775756836</td>
+        
+        <td>38.0</td>
+        
+        <td>1.5307316780090332</td>
+        
+        <td>2.0</td>
+        
+        <td>51.64648818969727</td>
+        
+        <td>51.22499465942383</td>
+        
+        <td>47.47032928466797</td>
+        
+        <td>47.72631072998047</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2668.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>60072</td>
+        
+        <td>0.3772123360339506</td>
+        
+        <td>44.28857803344727</td>
+        
+        <td>43.92156982421875</td>
+        
+        <td>5.6042585372924805</td>
+        
+        <td>5.882350921630859</td>
+        
+        <td>2.681349039077759</td>
+        
+        <td>1.0</td>
+        
+        <td>4.673246383666992</td>
+        
+        <td>6.0</td>
+        
+        <td>8.07079792022705</td>
+        
+        <td>4.0</td>
+        
+        <td>7.532997131347656</td>
+        
+        <td>13.0</td>
+        
+        <td>9.05238437652588</td>
+        
+        <td>4.4721360206604</td>
+        
+        <td>83.41246795654297</td>
+        
+        <td>79.69514465332031</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2668.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>993792</td>
+        
+        <td>6.240354938271605</td>
+        
+        <td>44.5803337097168</td>
+        
+        <td>44.70588302612305</td>
+        
+        <td>3.1649065017700195</td>
+        
+        <td>3.92156982421875</td>
+        
+        <td>22.8465633392334</td>
+        
+        <td>23.0</td>
+        
+        <td>3.845595836639404</td>
+        
+        <td>6.0</td>
+        
+        <td>35.06480407714844</td>
+        
+        <td>36.0</td>
+        
+        <td>3.434413194656372</td>
+        
+        <td>3.0</td>
+        
+        <td>41.91999816894531</td>
+        
+        <td>43.011627197265625</td>
+        
+        <td>57.09373474121094</td>
+        
+        <td>57.03059387207031</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2669.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>176017</td>
+        
+        <td>1.1052700717753343</td>
+        
+        <td>39.65015411376953</td>
+        
+        <td>39.60784530639648</td>
+        
+        <td>7.512948513031006</td>
+        
+        <td>8.235294342041016</td>
+        
+        <td>4.952998638153076</td>
+        
+        <td>5.0</td>
+        
+        <td>6.569657802581787</td>
+        
+        <td>12.0</td>
+        
+        <td>11.76461410522461</td>
+        
+        <td>12.0</td>
+        
+        <td>6.994806289672852</td>
+        
+        <td>13.0</td>
+        
+        <td>13.877707481384276</td>
+        
+        <td>14.317821502685549</td>
+        
+        <td>80.29297637939453</td>
+        
+        <td>68.1985855102539</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2669.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>1162986</td>
+        
+        <td>7.302781093267747</td>
+        
+        <td>40.3389778137207</td>
+        
+        <td>40.39215850830078</td>
+        
+        <td>3.3981945514678955</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>30.2629508972168</td>
+        
+        <td>29.0</td>
+        
+        <td>4.575360298156738</td>
+        
+        <td>6.0</td>
+        
+        <td>38.3369026184082</td>
+        
+        <td>38.0</td>
+        
+        <td>2.0419747829437256</td>
+        
+        <td>3.0</td>
+        
+        <td>48.99919128417969</td>
+        
+        <td>48.60041046142578</td>
+        
+        <td>51.89613723754883</td>
+        
+        <td>52.43140411376953</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2669.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>803784</td>
+        
+        <td>5.047230661651234</td>
+        
+        <td>43.745731353759766</td>
+        
+        <td>44.313724517822266</td>
+        
+        <td>4.59595251083374</td>
+        
+        <td>5.882350921630859</td>
+        
+        <td>19.535701751708984</td>
+        
+        <td>20.0</td>
+        
+        <td>3.4306716918945312</td>
+        
+        <td>5.0</td>
+        
+        <td>32.71697235107422</td>
+        
+        <td>34.0</td>
+        
+        <td>4.629730701446533</td>
+        
+        <td>6.0</td>
+        
+        <td>38.19906997680664</td>
+        
+        <td>39.35733795166016</td>
+        
+        <td>59.15322113037109</td>
+        
+        <td>59.34932708740234</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2670.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>779180</td>
+        
+        <td>4.892733852559156</td>
+        
+        <td>44.92477035522461</td>
+        
+        <td>44.70588302612305</td>
+        
+        <td>3.296766757965088</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>21.06226348876953</td>
+        
+        <td>22.0</td>
+        
+        <td>4.48540735244751</td>
+        
+        <td>6.0</td>
+        
+        <td>36.626094818115234</td>
+        
+        <td>38.0</td>
+        
+        <td>4.669135093688965</td>
+        
+        <td>5.0</td>
+        
+        <td>42.34919738769531</td>
+        
+        <td>44.10215377807617</td>
+        
+        <td>60.3807487487793</td>
+        
+        <td>59.93141555786133</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2670.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>211455</td>
+        
+        <td>1.3277972186053242</td>
+        
+        <td>56.23255157470703</td>
+        
+        <td>60.39215850830078</td>
+        
+        <td>8.375295639038086</td>
+        
+        <td>11.372547149658203</td>
+        
+        <td>0.4347024261951446</td>
+        
+        <td>0.0</td>
+        
+        <td>2.186546087265014</td>
+        
+        <td>2.0</td>
+        
+        <td>-0.2795393764972687</td>
+        
+        <td>-4.0</td>
+        
+        <td>6.238904476165772</td>
+        
+        <td>5.0</td>
+        
+        <td>5.186686992645264</td>
+        
+        <td>4.123105525970459</td>
+        
+        <td>-40.85337448120117</td>
+        
+        <td>-90.0</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2670.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>1294236</td>
+        
+        <td>8.12694408275463</td>
+        
+        <td>40.28874969482422</td>
+        
+        <td>40.39215850830078</td>
+        
+        <td>2.9680004119873047</td>
+        
+        <td>3.92156982421875</td>
+        
+        <td>31.97482109069824</td>
+        
+        <td>31.0</td>
+        
+        <td>4.151560783386231</td>
+        
+        <td>6.0</td>
+        
+        <td>39.51120376586914</td>
+        
+        <td>40.0</td>
+        
+        <td>1.9139009714126587</td>
+        
+        <td>3.0</td>
+        
+        <td>50.96168518066406</td>
+        
+        <td>50.6063232421875</td>
+        
+        <td>51.1538314819336</td>
+        
+        <td>51.911224365234375</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2671.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1289096</td>
+        
+        <td>8.094668290252057</td>
+        
+        <td>37.50117111206055</td>
+        
+        <td>37.25490188598633</td>
+        
+        <td>2.956341028213501</td>
+        
+        <td>4.313728332519531</td>
+        
+        <td>35.44709777832031</td>
+        
+        <td>35.0</td>
+        
+        <td>3.711819887161255</td>
+        
+        <td>6.0</td>
+        
+        <td>38.61707305908203</td>
+        
+        <td>39.0</td>
+        
+        <td>2.0382988452911377</td>
+        
+        <td>3.0</td>
+        
+        <td>52.521121978759766</td>
+        
+        <td>52.40229034423828</td>
+        
+        <td>47.54729843139648</td>
+        
+        <td>47.86240005493164</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2671.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>167920</td>
+        
+        <td>1.0544262795781894</td>
+        
+        <td>48.861114501953125</td>
+        
+        <td>48.6274528503418</td>
+        
+        <td>6.5170745849609375</td>
+        
+        <td>6.274509429931641</td>
+        
+        <td>3.492544174194336</td>
+        
+        <td>1.0</td>
+        
+        <td>4.834761619567871</td>
+        
+        <td>7.0</td>
+        
+        <td>8.040007591247559</td>
+        
+        <td>5.0</td>
+        
+        <td>7.970374584197998</td>
+        
+        <td>15.0</td>
+        
+        <td>9.44405460357666</td>
+        
+        <td>5.385164737701416</td>
+        
+        <td>66.67132568359375</td>
+        
+        <td>70.5599594116211</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2671.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>716995</td>
+        
+        <td>4.5022532773116</td>
+        
+        <td>41.89500427246094</td>
+        
+        <td>42.35294342041016</td>
+        
+        <td>4.2735209465026855</td>
+        
+        <td>5.0980377197265625</td>
+        
+        <td>23.834367752075195</td>
+        
+        <td>25.0</td>
+        
+        <td>4.33011531829834</td>
+        
+        <td>6.0</td>
+        
+        <td>35.22438049316406</td>
+        
+        <td>36.0</td>
+        
+        <td>4.444841384887695</td>
+        
+        <td>5.0</td>
+        
+        <td>42.65937042236328</td>
+        
+        <td>44.04542922973633</td>
+        
+        <td>56.03060531616211</td>
+        
+        <td>55.71311950683594</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2672.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1441021</td>
+        
+        <td>9.048656573511446</td>
+        
+        <td>35.80072021484375</td>
+        
+        <td>35.686275482177734</td>
+        
+        <td>2.4395925998687744</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>38.09734725952149</td>
+        
+        <td>38.0</td>
+        
+        <td>3.02710485458374</td>
+        
+        <td>4.0</td>
+        
+        <td>38.105751037597656</td>
+        
+        <td>38.0</td>
+        
+        <td>1.7306718826293943</td>
+        
+        <td>2.0</td>
+        
+        <td>53.93907165527344</td>
+        
+        <td>54.45181274414063</td>
+        
+        <td>45.06675338745117</td>
+        
+        <td>45.0</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2672.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>102427</td>
+        
+        <td>0.6431736573270319</td>
+        
+        <td>46.57095718383789</td>
+        
+        <td>46.66666793823242</td>
+        
+        <td>5.8316168785095215</td>
+        
+        <td>7.450981140136719</td>
+        
+        <td>3.792886734008789</td>
+        
+        <td>2.0</td>
+        
+        <td>4.745950698852539</td>
+        
+        <td>7.0</td>
+        
+        <td>8.97986888885498</td>
+        
+        <td>7.0</td>
+        
+        <td>7.906128883361816</td>
+        
+        <td>14.0</td>
+        
+        <td>10.173673629760742</td>
+        
+        <td>7.280109882354736</td>
+        
+        <td>74.23352813720703</td>
+        
+        <td>70.01688385009766</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2672.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>532347</td>
+        
+        <td>3.342786247347608</td>
+        
+        <td>41.24274826049805</td>
+        
+        <td>41.568626403808594</td>
+        
+        <td>4.102358818054199</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>26.59407615661621</td>
+        
+        <td>28.0</td>
+        
+        <td>4.71141242980957</td>
+        
+        <td>6.0</td>
+        
+        <td>36.06722640991211</td>
+        
+        <td>37.0</td>
+        
+        <td>3.76142954826355</td>
+        
+        <td>3.0</td>
+        
+        <td>44.95312881469727</td>
+        
+        <td>46.09772109985352</td>
+        
+        <td>53.80583572387695</td>
+        
+        <td>53.36588287353516</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2673.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1167574</td>
+        
+        <td>7.331590691711677</td>
+        
+        <td>43.5166130065918</td>
+        
+        <td>43.52941131591797</td>
+        
+        <td>3.002359390258789</td>
+        
+        <td>3.5294113159179688</td>
+        
+        <td>23.68920516967773</td>
+        
+        <td>24.0</td>
+        
+        <td>3.809264898300171</td>
+        
+        <td>6.0</td>
+        
+        <td>36.50423431396485</td>
+        
+        <td>37.0</td>
+        
+        <td>3.020291328430176</td>
+        
+        <td>2.0</td>
+        
+        <td>43.59156036376953</td>
+        
+        <td>44.40720748901367</td>
+        
+        <td>57.20036697387695</td>
+        
+        <td>57.03059387207031</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2673.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>874112</td>
+        
+        <td>5.488843878600823</td>
+        
+        <td>38.01411056518555</td>
+        
+        <td>38.431373596191406</td>
+        
+        <td>3.1158738136291504</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>34.93343734741211</td>
+        
+        <td>34.0</td>
+        
+        <td>4.284922122955322</td>
+        
+        <td>7.0</td>
+        
+        <td>38.37169647216797</td>
+        
+        <td>38.0</td>
+        
+        <td>1.822086215019226</td>
+        
+        <td>3.0</td>
+        
+        <td>52.00199890136719</td>
+        
+        <td>51.22499465942383</td>
+        
+        <td>47.83889389038086</td>
+        
+        <td>48.270484924316406</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2673.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>70113</td>
+        
+        <td>0.4402631594810957</td>
+        
+        <td>38.10114288330078</td>
+        
+        <td>37.25490188598633</td>
+        
+        <td>7.928306102752685</td>
+        
+        <td>7.843135833740234</td>
+        
+        <td>2.8502416610717773</td>
+        
+        <td>0.0</td>
+        
+        <td>5.897101879119873</td>
+        
+        <td>10.0</td>
+        
+        <td>10.742273330688477</td>
+        
+        <td>8.0</td>
+        
+        <td>6.260255336761475</td>
+        
+        <td>10.0</td>
+        
+        <td>12.033445358276367</td>
+        
+        <td>8.5440034866333</td>
+        
+        <td>87.04887390136719</td>
+        
+        <td>90.0</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2674.JPG</td>
+        
+        <td>3</td>
+        
+        <td>0</td>
+        
+        <td>1388930</td>
+        
+        <td>8.72155962657536</td>
+        
+        <td>36.18780899047852</td>
+        
+        <td>36.07843017578125</td>
+        
+        <td>3.2478060722351074</td>
+        
+        <td>4.705883026123047</td>
+        
+        <td>37.65575408935547</td>
+        
+        <td>38.0</td>
+        
+        <td>3.5252695083618164</td>
+        
+        <td>5.0</td>
+        
+        <td>38.6082878112793</td>
+        
+        <td>39.0</td>
+        
+        <td>2.4085607528686523</td>
+        
+        <td>3.0</td>
+        
+        <td>54.03877258300781</td>
+        
+        <td>54.45181274414063</td>
+        
+        <td>45.775909423828125</td>
+        
+        <td>45.7252197265625</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2674.JPG</td>
+        
+        <td>3</td>
+        
+        <td>1</td>
+        
+        <td>545148</td>
+        
+        <td>3.423168041087963</td>
+        
+        <td>41.59403610229492</td>
+        
+        <td>42.35294342041016</td>
+        
+        <td>4.925497531890869</td>
+        
+        <td>6.274513244628906</td>
+        
+        <td>25.473560333251957</td>
+        
+        <td>26.0</td>
+        
+        <td>4.507896900177002</td>
+        
+        <td>6.0</td>
+        
+        <td>35.997283935546875</td>
+        
+        <td>37.0</td>
+        
+        <td>4.9310832023620605</td>
+        
+        <td>7.0</td>
+        
+        <td>44.30181884765625</td>
+        
+        <td>45.48626327514648</td>
+        
+        <td>54.71427917480469</td>
+        
+        <td>55.00797653198242</td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td>SAM_2674.JPG</td>
+        
+        <td>3</td>
+        
+        <td>2</td>
+        
+        <td>146897</td>
+        
+        <td>0.9224157765078448</td>
+        
+        <td>43.36067962646485</td>
+        
+        <td>42.74509811401367</td>
+        
+        <td>8.568120956420898</td>
+        
+        <td>11.372547149658203</td>
+        
+        <td>6.123024940490723</td>
+        
+        <td>6.0</td>
+        
+        <td>6.615462303161621</td>
+        
+        <td>11.0</td>
+        
+        <td>14.682022094726562</td>
+        
+        <td>15.0</td>
+        
+        <td>7.483364105224609</td>
+        
+        <td>13.0</td>
+        
+        <td>16.728538513183594</td>
+        
+        <td>17.0</td>
+        
+        <td>75.57678985595703</td>
+        
+        <td>71.56504821777344</td>
+        
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</section>
+
+</body>
+</html>
