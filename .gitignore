@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+env/
+venv/
+
+# OS/IDE
+.DS_Store
+.vscode/
+*.swp
+
+# Data & results
+data/
+results/
+labels/
+report.html
