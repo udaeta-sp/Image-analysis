@@ -1,0 +1,29 @@
+io:
+  image_glob: "data/*.JPG"   # change if needed
+  output_dir: "results"
+
+dish:
+  min_radius_px: 800
+  max_radius_px: 2000
+  rim_erosion_pct: 3.0
+
+colony:
+  use_colony_mask: false   # if true, applies adaptive threshold on L*
+  thresh_block: 101
+  thresh_C: 5
+  min_area_px: 500
+
+clustering:
+  algo: "kmeans"           # kmeans|gmm (kmeans implemented in this minimal scaffold)
+  K: 3                     # set integer; no auto-selection in this minimal version
+  seed: 17
+  feature_space: ["a","b"] # use a and b only
+
+distributions:
+  bins_a: 64
+  bins_b: 64
+  ecdf: true
+
+export:
+  figures_dpi: 200
+  save_label_png: true
